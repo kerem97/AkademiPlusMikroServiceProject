@@ -68,7 +68,7 @@ namespace AkademiPlusMikroServiceProject.Catalog.Services.Concrete
         public async Task<Response<NoContent>> UpdateAsync(UpdateProductDto updateProductDto)
         {
             var product = _mapper.Map<Product>(updateProductDto);
-            var result = await _productCollection.FindOneAndReplaceAsync(x => x.ProductID == updateProductDto.CategoryID, product);
+            var result = await _productCollection.FindOneAndReplaceAsync(x => x.ProductID == updateProductDto.ProductID, product);
             if (result == null)
             {
                 return Response<NoContent>.Fail(404, "Kategori Bulunamadı");

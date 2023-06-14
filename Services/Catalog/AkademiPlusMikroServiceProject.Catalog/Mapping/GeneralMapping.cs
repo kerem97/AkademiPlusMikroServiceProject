@@ -13,8 +13,8 @@ namespace AkademiPlusMikroServiceProject.Catalog.Mapping
             CreateMap<Category, UpdateCategoryDto>().ReverseMap();
 
             CreateMap<Product, ProductDto>().ReverseMap();
-            CreateMap<Product, CreateCategoryDto>().ReverseMap();
-            CreateMap<Product, UpdateCategoryDto>().ReverseMap();
+            CreateMap<Product, CreateProductDto>().ReverseMap();
+            CreateMap<Product, UpdateProductDto>().ReverseMap();
         }
     }
 }
