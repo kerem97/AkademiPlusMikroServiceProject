@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MikroserviceProject.IdentityServer.Services;
 
 namespace MikroserviceProject.IdentityServer
 {
@@ -28,7 +29,7 @@ namespace MikroserviceProject.IdentityServer
 
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddLocalApiAuthentication();
             services.AddControllersWithViews();
 
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -56,7 +57,7 @@ namespace MikroserviceProject.IdentityServer
 
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
-
+            builder.AddResourceOwnerValidator<IdentityResourceOwnerPasswordValidator>();
             services.AddAuthentication()
                 .AddGoogle(options =>
                 {
@@ -82,6 +83,7 @@ namespace MikroserviceProject.IdentityServer
 
             app.UseRouting();
             app.UseIdentityServer();
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
