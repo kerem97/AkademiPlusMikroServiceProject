@@ -36,19 +36,23 @@ namespace AkademiPlusMikroServiceProject.Discount.Services
             throw new System.NotImplementedException();
         }
 
-        public Task<Response<Models.Discount>> GetByID(int id)
+        public async Task<Response<Models.Discount>> GetByID(int id)
         {
-            throw new System.NotImplementedException();
+            var discount = (await _dbConnection.QueryAsync<Models.Discount>("Select*From discount where id=@Id", new { Id = id })).SingleOrDefault();
+            return Response<Models.Discount>.Success(200, discount);
+
         }
 
-        public Task<Response<NoContent>> Save(Models.Discount discount)
+        public async Task<Response<NoContent>> Save(Models.Discount discount)
         {
-            throw new System.NotImplementedException();
+            var status = await _dbConnection.ExecuteAsync("insert into discount (userId,rate,code),values(@userId,@rate,@code)", discount);
+            return Response<NoContent>.Success(204);
         }
 
-        public Task<Response<NoContent>> Update(Models.Discount discount)
+        public async Task<Response<NoContent>> Update(Models.Discount discount)
         {
-            throw new System.NotImplementedException();
+            var status = await _dbConnection.ExecuteAsync("update discount set userId=@userid,code=@code,rate=@rate where id=@Id", new { Id = discount.Id, userId = discount.UserID, rate = discount.Rate, code = discount.Code });
+            return Response<NoContent>.Success(204);
         }
     }
 }
