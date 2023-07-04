@@ -45,7 +45,7 @@ namespace AkademiPlusMikroServiceProject.Discount.Services
 
         public async Task<Response<NoContent>> Save(Models.Discount discount)
         {
-            var status = await _dbConnection.ExecuteAsync("insert into discount (userId,rate,code),values(@userId,@rate,@code)", discount);
+            var status = await _dbConnection.ExecuteAsync("insert into discount (userId,rate,code)values(@userId,@rate,@code)", discount);
             return Response<NoContent>.Success(204);
         }
 
