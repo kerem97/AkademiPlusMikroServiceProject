@@ -3,8 +3,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:29990",
-      "sslPort": 44310
+      "applicationUrl": "http://localhost:50828",
+      "sslPort": 0
     }
   },
   "profiles": {
@@ -15,11 +15,11 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "AkademiPlusMikroServiceProject.Frontend": {
+    "AkademiPlusMikroServiceProject.Gateway": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": false,
-      "applicationUrl": "http://localhost:5010",
+      "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
