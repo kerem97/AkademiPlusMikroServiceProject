@@ -1,0 +1,21 @@
+﻿@model List<AkademiPlusMikroServiceProject.Frontend.Models.Catalog.CategoryViewModel>
+@{
+    Layout = null;
+}
+
+<h1>Kategori Listesi</h1>
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>Kategori ID</th>
+        <th>Kategori Adı</th>
+    </tr>
+
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.CatagoryID</td>
+            <td>@x.CatagoryName</td>
+        </tr>
+    }
+</table>
